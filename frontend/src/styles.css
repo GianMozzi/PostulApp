@@ -1,0 +1,34 @@
+:root { --bg:#e9eef2; --ink:#12202c; --muted:#5b6b78; --line:#cfd8df; --card:#fff; --accent:#0b6e8a; --wishlist:#7c5cd6; --applied:#1f7ae0; --interview:#d98a00; --technical:#0b9a8f; --offer:#1c9c4a; --rejected:#d4433b; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 "Segoe UI", system-ui, sans-serif; }
+.app { max-width:1500px; margin:0 auto; padding:24px; }
+header { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; }
+h1 { font:700 2rem Georgia, serif; margin:0; } header p { margin:4px 0 0; color:var(--muted); }
+button { font:inherit; padding:8px 14px; border:1px solid var(--line); background:#fff; border-radius:6px; cursor:pointer; }
+button.primary { background:var(--accent); color:#fff; border-color:var(--accent); } button.danger { color:var(--rejected); margin-right:auto; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:20px 0; }
+.stats div { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px; color:var(--muted); }
+.stats b { display:block; font:700 1.8rem Georgia, serif; color:var(--ink); }
+.search { width:100%; max-width:340px; padding:8px 12px; border:1px solid var(--line); border-radius:6px; font:inherit; margin-bottom:16px; }
+.error { color:var(--rejected); }
+.board { display:grid; grid-template-columns:repeat(6,minmax(220px,1fr)); gap:12px; overflow-x:auto; padding-bottom:12px; }
+.col { background:#dde4ea; border-top:3px solid var(--c, var(--line)); border-radius:8px; padding:10px; min-height:220px; }
+.col.wishlist{--c:var(--wishlist)} .col.applied{--c:var(--applied)} .col.interview{--c:var(--interview)} .col.technical{--c:var(--technical)} .col.offer{--c:var(--offer)} .col.rejected{--c:var(--rejected)}
+.col h2 { font-size:.95rem; margin:0 0 10px; display:flex; justify-content:space-between; } .col h2 span { color:var(--muted); }
+.empty { color:var(--muted); font-size:.85rem; text-align:center; margin-top:24px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:10px; margin-bottom:8px; cursor:grab; display:flex; flex-direction:column; gap:2px; }
+.card .row { display:flex; justify-content:space-between; gap:8px; } .card .company { color:var(--accent); font-weight:600; } .card small, .card p { color:var(--muted); margin:0; }
+.card em { font-style:normal; font-size:.75rem; padding:1px 6px; border-radius:4px; background:#eef1f4; height:fit-content; } .card em.high { color:var(--rejected); }
+.overlay { position:fixed; inset:0; background:rgba(18,32,44,.5); display:grid; place-items:center; padding:16px; }
+form { background:#fff; border-radius:10px; padding:20px; width:100%; max-width:480px; display:flex; flex-direction:column; gap:10px; max-height:95vh; overflow:auto; }
+form h2 { margin:0; font-family:Georgia, serif; } label { display:flex; flex-direction:column; gap:3px; font-size:.85rem; color:var(--muted); }
+input, select, textarea { font:inherit; padding:7px 9px; border:1px solid var(--line); border-radius:6px; color:var(--ink); }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; } .actions { display:flex; gap:8px; justify-content:flex-end; }
+.insights { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; margin-bottom:16px; }
+.insights > div { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px; }
+.insights h3 { margin:0 0 8px; font-size:.95rem; } .insights ul { margin:0; padding-left:18px; color:var(--muted); }
+.bars { display:flex; align-items:flex-end; gap:10px; height:110px; } .bars div { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.bars i { width:26px; background:var(--accent); border-radius:4px 4px 0 0; } .bars span { font-size:.75rem; color:var(--muted); }
+.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; } .filters .search { margin:0; max-width:200px; } .filters select { padding:8px; }
+form > button { width:100%; }
