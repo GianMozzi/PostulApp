@@ -9,6 +9,12 @@ Gestor de búsquedas laborales con tablero kanban. Organizá tus postulaciones p
 2. Backend: `cd backend && cp .env.example .env && npm install && npm run dev` (puerto 3001).
 3. Frontend: `cd frontend && npm install && npm run dev` (puerto 5173).
 
+## Deploy (demo gratuita)
+- **Base de datos:** TiDB Cloud Starter (compatible con MySQL). Ejecutá `backend/schema.sql` en su editor SQL.
+- **Backend (Render, Web Service, root `backend`):** build `npm install --include=dev && npm run build`, start `npm start`. Variables: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSL=true`, `JWT_SECRET`, `FRONTEND_URL`.
+- **Frontend (Vercel o Netlify, root `frontend`):** build `npm run build`, salida `dist`, variable `VITE_API_URL` con la URL del backend.
+- Healthcheck: `GET /health`. El plan gratuito de Render duerme tras 15 min sin tráfico: la primera visita tarda en responder.
+
 ## Tests
 `cd backend && npm test` — Jest + Supertest contra una base MySQL aparte (`postulapp_test`, se recrea sola desde `schema.sql`). Cubren auth, validaciones, CRUD, filtros, aislamiento entre usuarios y estadísticas. Corren en GitHub Actions en cada push.
 

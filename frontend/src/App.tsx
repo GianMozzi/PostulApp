@@ -164,6 +164,7 @@ function Login({ onDone }: { onDone: () => void }) {
         <label>Contraseña<input type="password" required minLength={6} value={v.password} onChange={(e) => setV({ ...v, password: e.target.value })} /></label>
         {err && <p className="error" role="alert">{err}</p>}
         <button className="primary">{reg ? "Crear cuenta" : "Entrar"}</button>
+        {import.meta.env.VITE_API_URL && <small className="hint">Si es la primera visita del rato, el servidor puede tardar hasta un minuto en despertar.</small>}
         <button type="button" onClick={() => { setReg(!reg); setErr(""); }}>{reg ? "Ya tengo cuenta" : "No tengo cuenta"}</button>
       </form>
     </div>

@@ -9,6 +9,7 @@ export const pool = mysql.createPool({
   host: process.env.DB_HOST, port: Number(process.env.DB_PORT ?? 3306),
   user: process.env.DB_USER, password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME, dateStrings: true,
+  ssl: process.env.DB_SSL === "true" ? { minVersion: "TLSv1.2", rejectUnauthorized: true } : undefined,
 });
 const SECRET = process.env.JWT_SECRET ?? "dev-secret";
 
@@ -39,7 +40,8 @@ function auth(req: any, res: Response, next: NextFunction) {
 const token = (id: number) => jwt.sign({ id }, SECRET, { expiresIn: "7d" });
 
 export const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_URL ?? true }));
+app.get("/health", (_req, res) => { res.json({ ok: true }); });
 app.use(express.json());
 
 app.post("/api/auth/register", h(async (req, res) => {

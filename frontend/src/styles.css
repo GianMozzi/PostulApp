@@ -32,3 +32,4 @@ input, select, textarea { font:inherit; padding:7px 9px; border:1px solid var(--
 .bars i { width:26px; background:var(--accent); border-radius:4px 4px 0 0; } .bars span { font-size:.75rem; color:var(--muted); }
 .filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; } .filters .search { margin:0; max-width:200px; } .filters select { padding:8px; }
 form > button { width:100%; }
+.hint { color:var(--muted); text-align:center; }

@@ -21,8 +21,10 @@ export const tok = {
   clear: () => localStorage.removeItem("token"),
 };
 
+const BASE = import.meta.env.VITE_API_URL ?? "";
+
 async function req<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(url, {
+  const res = await fetch(BASE + url, {
     ...init,
     headers: { "Content-Type": "application/json", ...(tok.get() ? { Authorization: `Bearer ${tok.get()}` } : {}) },
   });
